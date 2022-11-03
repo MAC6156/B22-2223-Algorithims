@@ -45,15 +45,17 @@ public class Main {
                 determineMove();
                 makeMove(compMoveColor,compMoveAmount);
             }else{
-                System.out.println("game state");
+                System.out.println("Current state of the game: \nGreen:" + green + "\nYellow: " + yellow + "\nOrange: " + orange);
                 System.out.println("Your turn! Pick a color: ");
                 humanMoveColor = scanner.next();
                 System.out.println("pick amount");
                 humanMoveAmount = scanner.nextInt();
+                makeMove(humanMoveColor,humanMoveAmount);
             }
             if(green <= 0 && yellow <= 0 && orange <= 0){
                 gameOver = true;
             }
+            computerMove = !computerMove;
         }
 
     }
@@ -61,15 +63,16 @@ public class Main {
         color = color.toUpperCase();
         switch (color) {
             case "G":
-//                System.out.println("g");
+                System.out.println("g");
                 green -= amount;
                 break;
             case "Y":
-//                System.out.println("y");
+                System.out.println("y");
                 yellow -= amount;
                 break;
 
             case "O":
+                System.out.println("y");
                 orange -= amount;
                 break;
             default:
@@ -90,8 +93,9 @@ public class Main {
             compMoveColor = "G";
         }else{
 //            random
+            System.out.println("random "+ (yellow-(green^orange)));
             compMoveAmount = green - (orange^yellow);
-            compMoveColor = "G";
+            compMoveColor = "g";
         }
     }
 }
